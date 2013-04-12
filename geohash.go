@@ -8,11 +8,15 @@ import (
 )
 
 const (
-	precision = 12
+	default_precision = 12
 	base32    = "0123456789bcdefghjkmnpqrstuvwxyz"
 )
 
 func Encode(lat, lng float64) string {
+    return EncodeWithPrecision(lat, lng, default_precision)
+}
+
+func EncodeWithPrecision(lat, lng float64, precision int) string {
 	geohash := ""
 	lats := [2]float64{-90, 90}
 	lngs := [2]float64{-180, 180}
